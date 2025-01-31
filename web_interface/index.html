@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VSCtlAgent · Phoenix Framework</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-222 antialiased">
+    <div class="phx-connected">
+        <main class="px-4 py-20 sm:px-6 lg:px-8">
+            <div class="mx-auto max-w-2xl">
+                <!-- Логотип -->
+                <div class="vs_icon_area">
+                    <img src="/images/logo.svg" alt="VIDAU systems" width="112" height="40" class="vs_icon">
+                    <h1 class="vs_igw_font text-c">vs igw</h1>
+                </div>
+
+                <!-- Форма входа -->
+                <div class="mx-auto max-w-sm">
+                    <form id="login_form">
+                        <input type="hidden" name="_csrf_token" value="MOCK_CSRF_TOKEN">
+                        
+                        <div class="mt-10 space-y-8 bg-222">
+                            <!-- Поле имени -->
+                            <div class="relative">
+                                <label for="user_name" class="uppercase text-tiny text-999">
+                                    Имя пользователя
+                                </label>
+                                <input type="text" name="user[name]" id="user_name" 
+                                    class="i-field mt-2 block w-full rounded-4 bg-222 text-c" 
+                                    required>
+                            </div>
+
+                            <!-- Поле пароля -->
+                            <div class="relative">
+                                <label for="user_password" class="uppercase text-tiny text-999">
+                                    Пароль
+                                </label>
+                                <input type="password" name="user[password]" id="user_password" 
+                                    class="i-field mt-2 block w-full rounded-4 bg-222 text-c" 
+                                    required>
+                                <div class="icon icon-eye-slash hidden_password_icon text-f" 
+                                    onclick="togglePassword()"></div>
+                            </div>
+
+                            <!-- Кнопка входа -->
+                            <div class="mt-2 flex items-center justify-between gap-6">
+                                <button class="enter_btn">Войти</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Функция для переключения видимости пароля
+        function togglePassword() {
+            const passwordField = document.getElementById('user_password');
+            const icon = document.querySelector('.hidden_password_icon');
+            
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                icon.classList.replace('icon-eye-slash', 'icon-eye');
+            } else {
+                passwordField.type = 'password';
+                icon.classList.replace('icon-eye', 'icon-eye-slash');
+            }
+        }
+    </script>
+</body>
+</html>
